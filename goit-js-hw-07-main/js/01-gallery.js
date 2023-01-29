@@ -22,9 +22,9 @@ function createGalleryItemsMarkup(items) {
 
 divEl.insertAdjacentHTML('beforeend', galleryItemsMarkup);
 
-divEl.addEventListener('click', onGalleryContainerClick);
+divEl.addEventListener('click', onModalOpen);
 
-function onGalleryContainerClick(evt) {
+function onModalOpen(evt) {
     evt.preventDefault();
 
     if(evt.target.nodeName !== 'IMG') {  
@@ -37,9 +37,17 @@ function onGalleryContainerClick(evt) {
     `)
     
     instance.show();
+    
+    if(instance.show) {
+        document.addEventListener('keydown', (event)=>{
+            if(event.code !== "Escape") {
+                return;
+            };
+            console.log(event.code);
+            instance.close();           
+        })
+    };
+
 };
-
-
-
 
 
