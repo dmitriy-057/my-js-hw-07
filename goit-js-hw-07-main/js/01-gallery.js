@@ -3,7 +3,6 @@ import { galleryItems } from "./gallery-items.js";
 const divEl = document.querySelector('.gallery');
 
 const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
-console.log(galleryItemsMarkup);
 
 function createGalleryItemsMarkup(items) {
     return items.map(({preview, original, description}) => {
@@ -34,20 +33,20 @@ function onModalOpen(evt) {
     console.log('target', evt.target);
     const instance = basicLightbox.create(` 
     <img src="${evt.target.dataset.source}">
-    `)
-    
+    `);
     instance.show();
     
     if(instance.show) {
-        document.addEventListener('keydown', (event)=>{
-            if(event.code !== "Escape") {
+        document.addEventListener('keydown',
+        (event)=>{
+            if(event.key !== "Escape") {
                 return;
             };
-            console.log(event.code);
+            console.log(event.key);
             instance.close();           
-        })
+        } )
     };
-
 };
+
 
 
