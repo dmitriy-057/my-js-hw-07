@@ -4,7 +4,6 @@ import { galleryItems } from "./gallery-items.js";
 const galleryEl = document.querySelector('.gallery');
 
 const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
-console.log(galleryItemsMarkup);
 
 function createGalleryItemsMarkup(items) {
     return items.map(({preview, original, description}) => {
@@ -27,12 +26,14 @@ function onModalOpen(evt) {
         return;
     };
 
-    console.log('target', evt.target);
+    addSimpleLightBox();
+};
+
+function addSimpleLightBox() {
     const lightbox = new SimpleLightbox('.gallery__item', {
         captionsData: 'alt',
         captionPosition: 'bottom',
         captionDelay: 250,
         enableKeyboard: true,
     });
-};
-
+}
